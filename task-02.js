@@ -3,7 +3,8 @@
 // пройже перевірку з callback callback приймає елемент масиву
 
 function some(arr, callback) {
-  for (let i = 0; i < arr.length; i += 1) {
+  let length = arr.length;
+  for (let i = 0; i < length; i += 1) {
     if (callback(arr[i])) {
       return true;
     }
@@ -11,9 +12,11 @@ function some(arr, callback) {
   return false;
 }
 
-function isGreaterThanTen(elem) {
+function isLessThanTen(elem) {
   return elem < 10;
 }
-
-console.log(some([1, 2, 3, 23, 5], isGreaterThanTen)); // true (перевіряємо чи елементи > 10)
-console.log(some([12, 45, 67, 34], isGreaterThanTen)); // false (перевіряємо чи елементи< 10)
+function isMoreThanTen(elem) {
+  return elem > 10;
+}
+console.log(some([1, 2, 3, 23, 5], isMoreThanTen)); // true (перевіряємо чи елементи > 10)
+console.log(some([12, 45, 67, 34], isLessThanTen)); // false (перевіряємо чи елементи< 10)
